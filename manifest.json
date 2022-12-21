@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "Face Privacy",
+  "version": "0.8",
+  "description": "Obfuscate uploaded faces to prevent automatic identification.",
+  "icons": {
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "file:///*",
+        "*://*.facebook.com/*"
+      ],
+      "js": [
+        "assets/js/jquery-3.4.1.min.js",
+        "assets/js/jquery.initialize.min.js",
+        "assets/js/jimp.min.js",
+        "assets/js/tf.min.js",
+        "assets/js/face-api.min.js",
+        "assets/js/load-image.all.min.js",
+        "assets/js-test/file-saver.js",
+        "tools.js",
+        "image-tools.js",
+        "face-detector.js",
+        "pgd-impersonator.js",
+        "perturbation.js",
+        "report-generator.js",
+        "faceprivacy.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "webRequest",
+    "<all_urls>",
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html"
+  },
+  "web_accessible_resources": [
+    "datasets/*",
+    "models/*"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://raw.githubusercontent.com; object-src 'self'"
+}

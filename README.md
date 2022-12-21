@@ -1,0 +1,1 @@
+You should download the weights of the embedding model ([https://drive.google.com/file/d/1VahZ8rC43DLkat-AZTW1jx0SFapi2hiG/view?usp=sharing](https://drive.google.com/file/d/1VahZ8rC43DLkat-AZTW1jx0SFapi2hiG/view?usp=sharing)) and copy the files into the './models/Inception-resnet' directory.
