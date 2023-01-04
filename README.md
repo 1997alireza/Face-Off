@@ -6,7 +6,7 @@ There are two approaches that we have taken in this context: attacking face dete
 
 ## 1. Attacking face detection models
 
-To perform a targeted attach, projected gradient descent is used to minimize the overlap between the areas detected by the model and the actual areas of faces in the image. The loss function we first used is:
+To perform a targeted attach, <b>projected gradient descent</b> is used to minimize the overlap between the areas detected by the model and the actual areas of faces in the image. The loss function we first used is:
 
 $$loss_{detection} = -\sum_{b \in boxes} score_b * (sign(d_b-t)),$$
 
@@ -23,7 +23,7 @@ Here is an example of an image and its perturbed version after it was subjected 
 
 ## 2. Attacking face recognation models
 
-The FaceNet model is used to represent images in a compact, feature-rich space known as the latent space. We can then measure the similarity between two faces by calculating the dot product of their embeddings in this latent space. To impersonate a particular target person, we are applying projected gradient descent with momentum to perturb the image so that its embedding closely matches that of the target person's face. To be able to apply the attack on black-box models we have used image augmentation techniques such as random cropping, random scaling, and random uniform noise.
+The <b>FaceNet</b> model is used to represent images in a compact, feature-rich space known as the latent space. FaceNet is based on <b>InceptionResnetV1</b> architecture. We can then measure the similarity between two faces by calculating the dot product of their embeddings in this latent space. To impersonate a particular target person, we are applying <b>projected gradient descent</b> with <b>momentum</b> to perturb the image so that its embedding closely matches that of the target person's face. To be able to apply the attack on black-box models we have used <b>image augmentation</b> techniques such as random cropping, random scaling, and random uniform noise.
 
 Here are three modified versions of a celebrity image with different levels of perturbation. Epsilon is a measure of how much the perturbation deviates from the original image in the process of projected gradient descent, and a smaller epsilon value means that the perturbation will be kept closer to the original image. The following perturbations were made using epsilon values of 8, 12, and 16.
 
