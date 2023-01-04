@@ -6,6 +6,7 @@ There are two approaches that we have taken in this context: attacking face dete
 
 ## 1. Attacking face detection models
 
+The local face detector used is the <b>SSD MobileNet V1</b>, which is a single shot multibox detector that utilizes MobileNet as its base model. The SSD algorithm has a higher coverage of bounding boxes compared to YOLO (You Only Look Once), but it comes at the cost of lower processing speed.
 To perform a targeted attach, <b>projected gradient descent</b> is used to minimize the overlap between the areas detected by the model and the actual areas of faces in the image. The loss function we first used is:
 
 $$loss_{detection} = -\sum_{b \in boxes} score_b * (sign(d_b-t)),$$
