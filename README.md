@@ -1,5 +1,7 @@
 # Face/Off
 
+Find the report [here](https://github.com/mahdiabdollahpour/mahdiabdollahpour.github.io/blob/master/files/Internship_Report.pdf) and sample outputs [here](https://github.com/mahdiabdollahpour/mahdiabdollahpour.github.io/blob/master/files/Face_Off_Report_compressed.pdf)
+
 In Face/Off, we strive to protect the privacy of social media users by performing black-box adversarial attacks to obscure their images in a way that is difficult for machine learning algorithms to accurately interpret and recognize their face, yet still preserves their visual appearance for human viewers.
 
 There are two approaches that we have taken in this context: attacking face detection and attacking face recognition models.
