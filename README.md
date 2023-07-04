@@ -1,17 +1,17 @@
 # Face/Off
 
-In Face/Off, we strive to protect the privacy of social media users by performing black-box adversarial attacks to obscure their images in a way that is difficult for machine learning algorithms to accurately interpret and recognize their face, yet still preserves its visual appearance for human viewers.
+In Face/Off, we strive to protect the privacy of social media users by performing black-box adversarial attacks to obscure their images in a way that is difficult for machine learning algorithms to accurately interpret and recognize their face, yet still preserves their visual appearance for human viewers.
 
-There are two approaches that we have taken in this context: attacking face detection and attacking face recognation models.
+There are two approaches that we have taken in this context: attacking face detection and attacking face recognition models.
 
 ## 1. Attacking face detection models
 
-The local face detector used is the <b>SSD MobileNet V1</b>, which is a single shot multibox detector that utilizes MobileNet as its base model. The SSD algorithm has a higher coverage of bounding boxes compared to YOLO (You Only Look Once), but it comes at the cost of lower processing speed.
-To perform a targeted attach, <b>projected gradient descent</b> is used to minimize the overlap between the areas detected by the model and the actual areas of faces in the image. The loss function we first used is:
+The local face detector used is the <b>SSD MobileNet V1</b>, which is a single-shot multi-box detector that utilizes MobileNet as its base model. The SSD algorithm has a higher coverage of bounding boxes compared to YOLO (You Only Look Once), but it comes at the cost of lower processing speed.
+To perform a targeted attack, <b>projected gradient descent</b> is used to minimize the overlap between the areas detected by the model and the actual areas of faces in the image. The loss function we first used is:
 
 $$loss_{detection} = -\sum_{b \in boxes} score_b * (sign(d_b-t)),$$
 
-in which $d_b$ is the distance of detected box $b$ from the actual position of face and $t$ is a threshold. $score_b$ is the probability that $b$ includes a face, predicted by model. By optimizing this loss, the real face was successfully undetected by the local model but the new fake detected boxes were small. To make fake boxes bigger, we optimize the following loss that considers the area of generated boxes:
+in which $d_b$ is the distance of detected box $b$ from the actual position of the face and $t$ is a threshold. $score_b$ is the probability that $b$ includes a face, predicted by the model. By optimizing this loss, the real face was successfully undetected by the local model but the new fake detected boxes were small. To make fake boxes bigger, we optimize the following loss that considers the area of generated boxes:
 
 $$loss_{detection} = -\sum_{b \in boxes} score_b * area_b * (sign(d_b-t))$$
 
